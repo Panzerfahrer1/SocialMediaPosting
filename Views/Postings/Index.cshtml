@@ -1,1 +1,29 @@
-﻿
+﻿@model List<Posting>
+
+<h1>Social Media Postings</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+            <th>Author</th>
+            <th>Veröffentlichung</th>
+            <th>Last edited</th>
+            <th>Likes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var posting in Model)
+        {
+            <tr>
+                <td>@posting.Id</td>
+                <td>@posting.Author</td>
+                <td>@posting.Text</td>
+                <td>@posting.CreatedDate.ToString("dd.MM.yyyy")</td>
+                <td>@posting.UpdatedDate?.ToString("dd.MM.yyyy")</td>
+                <td>@posting.Likes</td>
+            </tr>
+        }
+    </tbody>
+</table>

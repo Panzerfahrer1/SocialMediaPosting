@@ -1,13 +1,13 @@
-﻿namespace _03Social_Media_Postings.Repositories
+﻿using _03Social_Media_Postings.Models;
+
+namespace _03Social_Media_Postings.Repositories
 {
     public interface IPostingRepository
     {
-        public bool ShowAllPostings();
+        public List<Posting> GetAllPostings();
         public void CreatePosting();
         public void EditPosting();
         public void DeletePosting();
         public void LikePosting();
-
-        //This is a test comment to check git changes
     }
 }

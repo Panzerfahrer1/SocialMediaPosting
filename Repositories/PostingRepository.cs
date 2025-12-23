@@ -4,8 +4,15 @@ namespace _03Social_Media_Postings.Repositories
 {
     public class PostingRepository : IPostingRepository
     {
-     
-        private List<Posting> postings = new List<Posting>();
+        private static List<Posting> postings = new List<Posting>
+        {
+            new Posting("Hello, world!", "Adam"),
+            new Posting("Just had a great lunch.", "Dora"),
+            new Posting("Enjoying the sunny weather.", "Oliver"),
+            new Posting("Enjoying the sunny weather.", "Lukas"),
+            new Posting("Enjoying the sunny weather.", "Franz")
+        };
+
         public void CreatePosting()
         {
             throw new NotImplementedException();
@@ -26,9 +33,9 @@ namespace _03Social_Media_Postings.Repositories
             throw new NotImplementedException();
         }
 
-        public bool ShowAllPostings()
+        public List<Posting> GetAllPostings()
         {
-            throw new NotImplementedException();
+            return postings;
         }
     }
 }
