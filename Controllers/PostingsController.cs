@@ -16,9 +16,17 @@ namespace _03Social_Media_Postings.Controllers
             return View(_postingRepository.GetAllPostings());
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Posting posting)
+        {
+            _postingRepository.CreatePosting(posting);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Edit()

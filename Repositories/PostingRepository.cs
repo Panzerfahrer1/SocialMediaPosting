@@ -13,9 +13,14 @@ namespace _03Social_Media_Postings.Repositories
             new Posting("Enjoying the sunny weather.", "Franz")
         };
 
-        public void CreatePosting()
+        public void CreatePosting(Posting posting)
         {
-            throw new NotImplementedException();
+            if(!IsPostingValid(posting))
+            {
+                throw new ArgumentException("Invalid posting data.");
+            }
+            
+            postings.Add(posting);
         }
 
         public void DeletePosting()
@@ -36,6 +41,15 @@ namespace _03Social_Media_Postings.Repositories
         public List<Posting> GetAllPostings()
         {
             return postings;
+        }
+
+        private bool IsPostingValid(Posting posting)
+        {
+            if (string.IsNullOrEmpty(posting.Text))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
