@@ -6,6 +6,8 @@
         public void CreatePosting();
         public void EditPosting();
         public void DeletePosting();
-        public void LikePosting();  
+        public void LikePosting();
+
+        //This is a test comment to check git changes
     }
 }
