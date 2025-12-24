@@ -53,9 +53,10 @@ namespace _03Social_Media_Postings.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Like()
+        public IActionResult Like(int postingId)
         {
-            return View();
+            _postingRepository.LikePosting(postingId);
+            return RedirectToAction("Index");
         }
     }
 }

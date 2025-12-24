@@ -25,6 +25,10 @@
                 <td>@posting.UpdatedDate?.ToString("dd.MM.yyyy")</td>
                 <td>@posting.Likes</td>
                 <td>
+                    <a asp-action="Like" asp-route-postingId="@posting.Id"
+                       class="btn btn-primary btn-sm">Like 👍</a>
+                </td>
+                <td>
                     <a asp-action="Edit" asp-route-postingId="@posting.Id"
                        class="btn btn-warning btn-sm">Bearbeiten</a>
                 </td>

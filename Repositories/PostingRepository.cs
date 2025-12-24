@@ -40,14 +40,20 @@ namespace _03Social_Media_Postings.Repositories
                 throw new Exception("Posting not found.");  
             }
 
-            oldPost.Author = updatedPost.Author;
             oldPost.Text = updatedPost.Text;
             oldPost.UpdatedDate = DateTime.Now;
         }
 
-        public void LikePosting()
+        public void LikePosting(int postingId)
         {
-            throw new NotImplementedException();
+            var post = postings.FirstOrDefault(p => p.Id == postingId);
+
+            if(post == null)
+            {
+                throw new Exception("Posting not found.");
+            }
+
+            post.Likes += 1;
         }
 
         public List<Posting> GetAllPostings()
