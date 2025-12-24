@@ -23,9 +23,13 @@ namespace _03Social_Media_Postings.Repositories
             postings.Add(posting);
         }
 
-        public void DeletePosting()
+        public void DeletePosting(int postingId)
         {
-            throw new NotImplementedException();
+            var post = postings.FirstOrDefault(p => p.Id == postingId);
+            if (post != null)
+            {
+                postings.Remove(post);
+            }
         }
 
         public void EditPosting()
@@ -50,6 +54,18 @@ namespace _03Social_Media_Postings.Repositories
                 return false;
             }
             return true;
+        }
+
+        public Posting? GetPostingById(int postingId)
+        {
+            var posting = postings.FirstOrDefault(p => p.Id == postingId);
+
+            if (posting == null)
+            {
+                throw new ArgumentException("This ID does not exist");
+            }
+
+            return posting;
         }
     }
 }

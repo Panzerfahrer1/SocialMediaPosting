@@ -34,9 +34,16 @@ namespace _03Social_Media_Postings.Controllers
             return View();
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int postingId)
         {
-            return View();
+            return View(_postingRepository.GetPostingById(postingId));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult FinalDelete(int postingId)
+        {
+            _postingRepository.DeletePosting(postingId);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Like()

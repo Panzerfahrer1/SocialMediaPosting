@@ -1,1 +1,35 @@
-﻿
+﻿@model Posting
+
+<h1>Posting löschen</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Text</th>
+            <th>Author</th>
+            <th>Veröffentlichung</th>
+            <th>Last edited</th>
+            <th>Likes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Author</td>
+            <td>@Model.Text</td>
+            <td>@Model.CreatedDate.ToString("dd.MM.yyyy")</td>
+            <td>@Model.UpdatedDate?.ToString("dd.MM.yyyy")</td>
+            <td>@Model.Likes</td>
+            <td>
+                <a asp-action="Edit" asp-route-postingId="@Model.Id"
+                   class="btn btn-warning btn-sm">Bearbeiten</a>
+            </td>
+            <td>
+                <form asp-action="Delete" asp-route-postingId="@Model.Id" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Löschen</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
