@@ -2,6 +2,7 @@
 
 <h1>Social Media Postings</h1>
 
+<a asp-action="Create" class="btn btn-primary">Neues Posting erstellen</a>
 <table class="table">
     <thead>
         <tr>
@@ -23,6 +24,14 @@
                 <td>@posting.CreatedDate.ToString("dd.MM.yyyy")</td>
                 <td>@posting.UpdatedDate?.ToString("dd.MM.yyyy")</td>
                 <td>@posting.Likes</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@posting.Id"
+                       class="btn btn-warning btn-sm">Bearbeiten</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@posting.Id"
+                       class="btn btn-danger btn-sm">Löschen</a>
+                </td>
             </tr>
         }
     </tbody>
