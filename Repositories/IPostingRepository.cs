@@ -6,7 +6,7 @@ namespace _03Social_Media_Postings.Repositories
     {
         public List<Posting> GetAllPostings();
         public void CreatePosting(Posting posting);
-        public void EditPosting();
+        public void EditPosting(int id, PostingDto posting);
         public void DeletePosting(int postingId);
         public void LikePosting();
         public Posting? GetPostingById(int postingId);

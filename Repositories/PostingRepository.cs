@@ -32,9 +32,17 @@ namespace _03Social_Media_Postings.Repositories
             }
         }
 
-        public void EditPosting()
+        public void EditPosting(int id, PostingDto updatedPost)
         {
-            throw new NotImplementedException();
+            var oldPost = postings.FirstOrDefault(p => p.Id == id);
+            if (oldPost == null)
+            {
+                throw new Exception("Posting not found.");  
+            }
+
+            oldPost.Author = updatedPost.Author;
+            oldPost.Text = updatedPost.Text;
+            oldPost.UpdatedDate = DateTime.Now;
         }
 
         public void LikePosting()

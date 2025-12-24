@@ -29,9 +29,16 @@ namespace _03Social_Media_Postings.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int postingId)
         {
-            return View();
+            return View(_postingRepository.GetPostingById(postingId));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, PostingDto posting)
+        {
+            _postingRepository.EditPosting(id, posting);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int postingId)

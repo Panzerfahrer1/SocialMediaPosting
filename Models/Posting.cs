@@ -9,7 +9,7 @@
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
-        public int Likes { get; private set; }
+        public int Likes { get; set; }
 
         public Posting()
         {
@@ -17,7 +17,7 @@
             CreatedDate = DateTime.Now;
             Likes = 0;
         }
-
+        
         public Posting(string text, string? author = null)
         {
             Id = _nextId++;

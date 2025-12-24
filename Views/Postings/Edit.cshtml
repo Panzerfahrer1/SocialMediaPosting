@@ -1,5 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Posting
+
+<h1>Posting bearbeiten</h1>
+<br />
+
+<form action="Edit" method="post">
+    <h5>Autor</h5>
+    <input type="text" asp-for="Author" /><br />
+
+    <h5>Text</h5>
+    <input type="text" asp-for="Text" /><br />
+
+    <h5>Veröffentlichungsdatum</h5>
+    <input type="date" asp-for="CreatedDate" disabled /><br />
+
+    <h5>Letzte Änderung</h5>
+    <input type="date" asp-for="UpdatedDate" disabled /><br />
+
+    <h5>Likes</h5>
+    <input type="text" asp-for="Likes" disabled /><br />
+
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-primary">Speichern</button>
+</form>
