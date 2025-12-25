@@ -2,6 +2,19 @@
 
 <h1>Social Media Postings</h1>
 
+<form asp-action="Index" method="get">
+    <h5>Sortieren:</h5>
+    <input type="text" name="sortByAuthor" value="@Context.Request.Query["sortByAuthor"]" />
+    <input type="date" name="sortByPostDate" value="@Context.Request.Query["sortByPostDate"]" />
+
+    <input type="checkbox"
+           name="sortByLikes"
+           value="true"
+           @(Context.Request.Query["sortByLikes"] == "true" ? "checked" : "") />
+
+    <input type="submit" value="Sortieren" class="btn btn-primary" />
+</form>
+
 <a asp-action="Create" class="btn btn-primary">Neues Posting erstellen</a>
 <table class="table">
     <thead>
@@ -25,8 +38,11 @@
                 <td>@posting.UpdatedDate?.ToString("dd.MM.yyyy")</td>
                 <td>@posting.Likes</td>
                 <td>
-                    <a asp-action="Like" asp-route-postingId="@posting.Id"
+                    <a asp-action="Like" asp-route-postingId="@posting.Id" asp-route-sortByAuthor="@Context.Request.Query["sortByAuthor"]"
+                       asp-route-sortByPostDate="@Context.Request.Query["sortByPostDate"]"
+                       asp-route-sortByLikes="@Context.Request.Query["sortByLikes"]"
                        class="btn btn-primary btn-sm">Like 👍</a>
+
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-postingId="@posting.Id"

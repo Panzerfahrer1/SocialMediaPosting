@@ -11,9 +11,10 @@ namespace _03Social_Media_Postings.Controllers
             _postingRepository = repos;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string? sortByAuthor, DateTime? sortByPostDate, bool sortByLikes = false)
         {
-            return View(_postingRepository.GetAllPostings());
+            
+            return View(_postingRepository.GetAllPostings(sortByAuthor, sortByPostDate, sortByLikes));
         }
 
         [HttpGet]
@@ -53,10 +54,17 @@ namespace _03Social_Media_Postings.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Like(int postingId)
+        public IActionResult Like(int postingId, string? sortByAuthor, DateTime? sortByPostDate, bool sortByLikes = false)
         {
             _postingRepository.LikePosting(postingId);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new
+            {
+                sortByAuthor = sortByAuthor,
+                sortByPostDate = sortByPostDate,
+                // ToLower bc in the URL its put as "True" instead of "true". This doesnt matter in C# But the 
+                // If condition in the CS html is set to @Context.xxx.xxx == "true" ? ... and not == "True"
+                sortByLikes = sortByLikes.ToString().ToLower()
+            });
         }
     }
 }

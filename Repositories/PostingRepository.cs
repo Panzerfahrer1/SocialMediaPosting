@@ -56,17 +56,40 @@ namespace _03Social_Media_Postings.Repositories
             post.Likes += 1;
         }
 
-        public List<Posting> GetAllPostings()
+        public List<Posting> GetAllPostings(string? Author = null, DateTime? postDate = null, bool sortByLikes = false)
         {
-            return postings;
+            var filteredPostings = postings.AsEnumerable();
+
+            if (!string.IsNullOrEmpty(Author))
+            {
+                filteredPostings = filteredPostings.Where(p => p.Author == Author);
+            }
+
+            if (postDate.HasValue)
+            {
+                filteredPostings = filteredPostings.Where(p => p.CreatedDate.Date == postDate.Value.Date);
+            }
+
+            if (sortByLikes)
+            {
+                filteredPostings = filteredPostings.OrderByDescending(p => p.Likes);
+            }
+
+            return filteredPostings.ToList();
         }
 
         private bool IsPostingValid(Posting posting)
         {
             if (string.IsNullOrEmpty(posting.Text))
             {
-                return false;
+                throw new ArgumentException("oida na");
             }
+
+            if (posting.Text.Length > 280)
+            {
+                throw new ArgumentException("The text exceeds the maximum length of 280 characters.");
+            }
+
             return true;
         }
 
