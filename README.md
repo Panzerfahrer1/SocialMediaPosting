@@ -1,1 +1,3 @@
-<img width="480" height="316" alt="image" src="https://github.com/user-attachments/assets/69a608b8-5cb2-4c5d-b476-27fe3c7a38f5" />
+As Always:
+
+<img width="1080" height="950" alt="image" src="https://github.com/user-attachments/assets/c98a344f-4c1d-4044-9f2a-4f5c94a019b0" />
