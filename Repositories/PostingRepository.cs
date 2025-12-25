@@ -82,7 +82,7 @@ namespace _03Social_Media_Postings.Repositories
         {
             if (string.IsNullOrEmpty(posting.Text))
             {
-                throw new ArgumentException("oida na");
+                throw new ArgumentException("Posting text cannot be empty");
             }
 
             if (posting.Text.Length > 280)
